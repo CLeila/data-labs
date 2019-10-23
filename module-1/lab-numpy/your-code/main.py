@@ -10,11 +10,15 @@ print(np.show_config())
 #3. Generate a 2x3x5 3-dimensional array with random values. Assign the array to variable "a"
 # Challenge: there are at least three easy ways that use numpy to generate random arrays. How many ways can you find?
 
-a = np.random.random()
+#Solution 1 : ask np to do 2 lists of 3 lists with 5 values
+a = np.random.random((2,3,5))
+print(a)
+#2nd 
+b = np.array([(1,2,3,4,5), (7,8,4,5,6), (9,6,7,8,9)][(1,2,3,4,5), (7,8,4,5,6), (9,6,7,8,9)])
+print(b)
+
 
 #4. Print a.
-
-print(a)
 
 #5. Create a 5x2x3 3-dimensional array with all values equaling 1.
 #Assign the array to variable "b"
