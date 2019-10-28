@@ -1,0 +1,50 @@
+## First pipeline.py
+
+Steps :
+
+* 1 / The dataset is about shark attacks, 90% text 10% number
+* 2 / Observations ( isna(), value_counts(), sum()) 
+* 3 / I choose to see during wich activities Sharks attacks between 2000 and 2016, fatal or not?
+    Group by Year
+* 4 / Manipulate dummies with list in my row 'Acivity' was really hard, pd.get_dummies(df3['Activity'].apply(pd.Series).stack()).sum(level=0)    == > We need to apply Series 
+    .stack() puts everything in one column again (creating a multi-level index)
+    .sum(level=0) for remerging the different rows that should be one row (by summing up the second level, only keeping the original level (level=0))
+
+* 5 / Low variance - Is 90% of the df is the same? 
+* 6 / Categorize ( qcut/cut , one hot encoding*)
+* 7 / drop duplicate
+* 8 / drop rows/cols
+I have some trubles with list see plot
+* 9 / open spyder - create fonctions 
+* 10 / save the file as pipeline.py
+* 11 / Look my wonderful report when I will finish it 
+
+
+
+
+.....................................................................................................................................................................................................................................................!!! '_'
+
+
+
+You must construct a data pipeline with the majority of your code wrapped in functions.
+* Each data pipeline stage should be covered: acquisition, wrangling, analysis, and reporting.
+* You must demonstrate all the topics we covered in the chapter (functions, list comprehensions, string operations, and error handling) in your processing of the data.
+* There should be some data set that gets imported and some result that gets exported.
+* Your code should be saved in a Python executable file (.py), your data should be saved in a folder named data, and your results should be saved in a folder named output.
+* You should also include a README.md file that describes the steps you took and your thought process as you built your data pipeline.
+
+## Necessary Deliverables
+
+The following deliverables should be pushed to your Github repo for this chapter.
+
+* **A Python (.py) code file** that contains the code for your data pipeline.
+* **A data folder** containing your data set.
+* **An output folder** containing the output of your data pipeline.
+* **A ``README.md`` file** containing a detailed explanation of the process followed in the design and construction of your pipeline and incorporation of intermediate Python concepts as well as your results, obstacles encountered, and lessons learned.
+
+
+## Useful Resource
+
+* [Google](https://google.com)
+* [one hot encoding] (https://hackernoon.com/what-is-one-hot-encoding-why-and-when-do-you-have-to-use-it-e3c6186d008f)
+* [Convert a column of list to dummies](https://stackoverflow.com/questions/29034928/pandas-convert-a-column-of-list-to-dummies)
