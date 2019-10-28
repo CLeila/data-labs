@@ -15,7 +15,6 @@ title='Top 10 Car Producers by Fuel Efficiency in '+str(year)
 
 def acquisition():
     data=pd.read_csv(r'D:\IRONHACK\vehicles\vehicles\vehicles.csv')
-    
     return data
 
 def wrangling(df):
