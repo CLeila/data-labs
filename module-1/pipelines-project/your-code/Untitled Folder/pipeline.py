@@ -53,46 +53,42 @@ def wrangling(df1):
     df1['Fatal']= df1['Fatal'].fillna(df1['Fatal'].mode()[0])
     df1['Country']= df1['Country'].fillna(df1['Country'].mode()[0])
     
-    #See if my Dataframe 1 have a good low variance 
-    low_variance=[]
-    for col in df1._get_numeric_data():
-        minimum= min(df1[col])
-        ninety_perc =percentile(df1[col], 90)
-        if minimum == ninety_perc:
-            low_variance.append(col)
-    
+
     #Vérification des outliers et cxl
     df1.boxplot(column='Year')
     
     #Observation supplémentaire
     stats=df1.describe().T
-    
     #Ajout de la colonne IQR (Interquartile range)
-    stats['IQR']= stats['75%']- stats['25%']
-    stats
-    
+    stats['IQR']= stats['75%']- stats['25%']    
     outliers = pd.DataFrame(columns=df1.columns)
-    outliers
     
-    for columns in stats.index: 
-        iqr=stats.at[col,'IQR']
-        cutoff=iqr*1.6
-        lower= stats.at[col,'25%']-cutoff
-        higher= stats.at[col,'75%']+cutoff
-        results=df1[(df1[col]<lower)|(df1[col]>higher)].copy()
-        results['Outlier']=col
-        outliers=outliers.append(results)
+#    for columns in stats.index: 
+#        iqr=stats.at[col,'IQR']
+#        cutoff=iqr*1.6
+#        lower= stats.at[col,'25%']-cutoff
+#        higher= stats.at[col,'75%']+cutoff
+#        results=df1[(df1[col]<lower)|(df1[col]>higher)].copy()
+#        results['Outlier']=col
+#        outliers=outliers.append(results)
     df1.drop(outliers.index)
     filtered = df1[df1.Year == year].copy()
     return filtered 
 
 def analyze(filtered):
+        l=[]
+        for i in result.Activity:
+            if len(i)>0:
+                l.append(i[0])
+            else:
+                l.append(np.nan)
+        result.Activity=l
     result = filetered.groupby('Year', as_index=False).head(10)
     return result
 
 def viz(df):
    fig, ax= plt.subplots(figsize=(15,8))
-   barchart=sns.barplot(data=result, x='Year', y='Country')
+   barchart=sns.barplot(data=df1, x='Year', y='Country')
    plt.title(title+'\n',fontsize=16)
    sns.set_style('darkgrid')
    plt.show()
